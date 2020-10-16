@@ -1,0 +1,225 @@
+body {
+  background-color: white;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  font-family: monospace;
+  font-size: 1.3em;
+  background-image: url("https://cdn.discordapp.com/attachments/736393082831896590/766543353205882900/codebg.png");
+  background-size: cover;
+}
+
+.wrapper {
+  margin: auto;
+  width: 19em;
+  height: 28em;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  border-radius: 50px;
+  box-shadow: 9px 7px 5px rgba(0, 0, 0, 0.521);
+  border: 3px solid white;
+}
+
+h2 {
+  margin: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+#robothead {
+  width: 3em;
+  font-size: 3em;
+  margin: auto;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.battleground {
+  border: 2px solid white;
+  width: 14em;
+  height: 7em;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+}
+
+.battleground-wrap {
+  display: flex;
+  line-height: 1;
+  margin: auto;
+}
+
+.him {
+  margin: auto;
+  padding-left: 0.77em;
+}
+
+.you {
+  margin: auto;
+  padding-right: 0.77em;
+}
+
+.computer {
+  margin: auto;
+  margin-right: 3.7em;
+  margin-bottom: 5em;
+  animation: computerMov;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.player {
+  margin: auto;
+  margin-left: 0;
+  margin-bottom: 5em;
+  animation: playerMov;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes playerMove {
+  0% {
+    margin-left: 0;
+  } 20% {
+    margin-left: 3.5em;
+  } 40% {
+    margin-left: 1.5em;
+  } 60% {
+    margin-left: 3.5em;
+  } 80% {
+    margin-left: 1.5em;
+    opacity: 1;
+  } 100% {
+    margin-left: 3.5em;
+    opacity: 0;
+  }
+}
+
+@keyframes computerMove {
+  0% {
+    margin-right: 3.7em;
+  } 20% {
+    margin-right: 7.2em;
+  } 40% {
+    margin-right: 5.2em;
+  } 60% {
+    margin-right: 7.2em;
+  } 80% {
+    margin-right: 5.2em;
+    opacity: 1;
+  } 100% {
+    margin-right: 7.2em;
+    opacity: 0;
+  }
+}
+
+.result {
+  position: absolute;
+  width: 5em;
+  font-size: 1em;
+  left: 50%;
+  margin-left: -2.5em;
+  margin-top: 2em;
+  text-align: center;
+  opacity: 0;
+  animation: resultAnimaton;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1.7s;
+}
+
+@keyframes resultAnimation {
+  0% {
+    font-size: 1em;
+  } 100% {
+    opacity: 1;
+    font-size: 1.5em;
+  }
+}
+
+#computerRock, #computerPaper, #computerScissors {
+  margin: auto;
+  font-size: 3em;
+  position: absolute;
+  opacity: 0;
+}
+#playerRock, #playerPaper, #playerScissors{
+  margin: auto;
+  font-size: 3em;
+  position: absolute;
+  transform: scaleX(-1);
+  opacity: 0;
+}
+
+.choices {
+  display: flex;
+  margin: auto;
+  margin-top: -1em;
+  animation: buttonOu;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.choices p:hover {
+  cursor: pointer;
+  color: magenta;
+  transition: 0.3s;
+}
+
+@keyframes buttonOut {
+  0% {
+    opacity: 1;
+  } 100% {
+    opacity: 0.3;
+  }
+}
+
+.playAgain {
+  margin: auto;
+  text-align: center;
+  width: 3em;
+  height: 3em;
+  border-radius: 15px;
+  animation: rese;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.7s;
+  display: flex;
+  opacity: 0.2;
+  border: 2px solid white;
+  pointer-events: none;
+}
+
+#redo {
+  margin: auto;
+  font-size: 1.5em;
+  transition: 0.3s;
+}
+
+#redo:hover {
+  color: rgb(255, 145, 0);
+}
+
+@keyframes reset {
+  0% {
+    opacity: 0.3;
+  } 90% {
+    opacity: 0.99
+  } 100% {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+  }
+}
+
+.choices p {
+  padding: 0.45em;
+  border: 2px solid white;
+  border-radius: 15px;
+  margin-left: 0.33em;
+  margin-right: 0.33em;
+}

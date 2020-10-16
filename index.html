@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/27a12b435e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Rocky Papier Sciassaries</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <i id="robothead" class="fas fa-robot"></i>
+    <h2>RoPaSci5000</h2>
+
+    <div class="battleground-wrap">
+
+      <p class="you">P<br>l<br>a<br>y<br>e<br>r</p>
+
+      <div class="battleground">
+        <div class="player">
+          <div id="playerRock" class="rock">
+            <i class="fas fa-hand-rock"></i>
+          </div>
+          <div id="playerPaper" class="paper">
+            <i class="fas fa-hand-paper"></i>
+          </div>
+          <div id="playerScissors" class="scissors">
+            <i class="fas fa-hand-scissors"></i>
+          </div>
+        </div>
+
+        <div class="result">
+          You Win!
+        </div>
+
+        <div class="computer">
+          <div id="computerRock" class="rock">
+            <i class="fas fa-hand-rock"></i>
+          </div>
+          <div id="computerPaper" class="paper">
+            <i class="fas fa-hand-paper"></i>
+          </div>
+          <div id="computerScissors" class="scissors">
+            <i class="fas fa-hand-scissors"></i>
+          </div>
+        </div>
+      </div>
+
+      <p class="him">R<br>o<br>P<br>a<br>S<br>c<br>i</p>
+
+    </div>
+    <div onclick="location.reload();" class="playAgain">
+      <i id="redo" class="fas fa-redo"></i>
+    </div>
+
+    <div class="choices">
+      <p id="rock">Rock</p>
+
+      <p id="paper">Paper</p>
+
+      <p id="scissors">Scissors</p>
+    </div>
+
+  </div>
+
+
+  <script>
+    // buttons
+    var rocky = document.getElementById("rock");
+    var papier = document.getElementById("paper");
+    var Sciassaries = document.getElementById("scissors");
+    var redo = document.querySelector(".playAgain");
+    var buttons = document.querySelector(".choices")
+
+    console.log(buttons);
+
+    // Button funcionality
+    rocky.addEventListener("click", humanFunctionRock);
+    papier.addEventListener("click", humanFunctionPaper);
+    Sciassaries.addEventListener("click", humanFunctionScissors);
+
+    function humanFunctionRock() {
+      humanValue = "rock";
+      RPS(humanValue);
+    }
+    function humanFunctionPaper() {
+      humanValue = "paper";
+      RPS(humanValue);
+    }
+    function humanFunctionScissors() {
+      humanValue = "scissors";
+      RPS(humanValue);
+    }
+
+    // Player RPS choice initiator
+    var humanValue = null;
+
+    // 2D objects
+    // Player
+    var rock2Dplayer = document.getElementById("playerRock");
+    var paper2Dplayer = document.getElementById("playerPaper");
+    var scissors2Dplayer = document.getElementById("playerScissors");
+    // Computer
+    var rock2Dcomputer = document.getElementById("computerRock");
+    var paper2Dcomputer = document.getElementById("computerPaper");
+    var scissors2Dcomputer = document.getElementById("computerScissors");
+    // divs
+    var playerDiv = document.querySelector(".player");
+    var computerDiv = document.querySelector(".computer");
+    // result
+    var result = document.querySelector(".result");
+
+
+    function RPS(value) {
+      let computerChoice = Math.floor(Math.random() * 10);
+      var computerResult = 0;
+
+      if (computerChoice <= 3) {
+        computerResult = "rock";
+      } else if (computerChoice >= 4 && computerChoice <= 6) {
+        computerResult = "paper";
+      } else {
+        computerResult = "scissors";
+      };
+
+      console.log("You picked " + humanValue);
+      console.log("Computer picked " + computerResult);
+
+      playerDiv.style.animationName = "playerMove";
+      computerDiv.style.animationName = "computerMove";
+
+      if (humanValue === "rock" && computerResult === "rock") {
+        console.log("Draw!");
+        rock2Dplayer.style.opacity = "1";
+        rock2Dcomputer.style.opacity = "1"
+        result.style.animationName = "resultAnimation";
+        result.innerHTML = "Draw!";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "rock" && computerResult === "paper") {
+        console.log("You Lose!");
+        rock2Dplayer.style.opacity = "1";
+        paper2Dcomputer.style.opacity = "1"
+        result.style.animationName = "resultAnimation";
+        result.innerHTML = "You Lose!";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "rock" && computerResult === "scissors") {
+        console.log("You Win!");
+        rock2Dplayer.style.opacity = "1";
+        scissors2Dcomputer.style.opacity = "1"
+        result.style.animationName = "resultAnimation";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "paper" && computerResult === "rock") {
+        paper2Dplayer.style.opacity = "1";
+        rock2Dcomputer.style.opacity = "1";
+        result.style.animationName = "resultAnimation";
+        console.log("You Win!");
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "paper" && computerResult === "paper") {
+        paper2Dplayer.style.opacity = "1";
+        paper2Dcomputer.style.opacity = "1";
+        result.style.animationName = "resultAnimation";
+        console.log("Draw!");
+        result.innerHTML = "Draw!";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "paper" && computerResult === "scissors") {
+        paper2Dplayer.style.opacity = "1";
+        scissors2Dcomputer.style.opacity = "1";
+        console.log("You Lose!");
+        result.style.animationName = "resultAnimation";
+        result.innerHTML = "You Lose!";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "scissors" && computerResult === "rock") {
+        scissors2Dplayer.style.opacity = "1";
+        rock2Dcomputer.style.opacity = "1";
+        console.log("You Lose!");
+        result.style.animationName = "resultAnimation";
+        result.innerHTML = "You Lose!";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "scissors" && computerResult === "paper") {
+        scissors2Dplayer.style.opacity = "1";
+        paper2Dcomputer.style.opacity = "1";
+        result.style.animationName = "resultAnimation";
+        console.log("You Win!");
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      } else if (humanValue === "scissors" && computerResult === "scissors") {
+        scissors2Dplayer.style.opacity = "1";
+        scissors2Dcomputer.style.opacity = "1";
+        result.style.animationName = "resultAnimation";
+        console.log("Draw!");
+        result.innerHTML = "Draw!";
+        //Turns the game off
+        rocky.style.pointerEvents = "none";
+        papier.style.pointerEvents = "none";
+        Sciassaries.style.pointerEvents = "none"
+      };
+
+      reset();
+
+    }
+
+    function reset() {
+      redo.style.animationName = "reset";
+      buttons.style.animationName = "buttonOut";
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>
